@@ -1,4 +1,3 @@
-```python
 import socket
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
@@ -33,5 +32,9 @@ if __name__ == "__main__":
         0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F
     ])
     sender = AES256UDPSender("192.168.72.141", 4210, key, iv)
-    sender.send("The code is working ")
+    while True:
+        msg = input("Enter message to send (or 'exit' to quit): ")
+        if msg.lower() == "exit":
+            break
+        sender.send(msg)
 ```
